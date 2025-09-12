@@ -13,5 +13,5 @@ install.packages("devtools")
 ```
 3. Install *zhulabtools-gbif* with
 ```R
-devtools::install_github("zhulabgroup/zhulabtools-gbif@r")
+devtools::install_github("zhulabgroup/zhulabtools-gbif")
 ```
