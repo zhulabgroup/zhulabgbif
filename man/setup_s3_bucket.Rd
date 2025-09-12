@@ -22,8 +22,10 @@ An S3 bucket connection object.
 This function sets up a connection to an S3 bucket, using either a proxy or direct connection, depending on the provided parameters.
 }
 \examples{
+\dontrun{
 setup_s3_bucket(bucket_name = "gbif-open-data-us-east-1",
 endpoint = "https://s3.us-east-1.amazonaws.com",
 region = "us-east-1",
 proxy = "http://proxy1.arc-ts.umich.edu:3128" # For using Slurm on Greatlakes)
+}
 }

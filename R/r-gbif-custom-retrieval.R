@@ -66,11 +66,11 @@ write_chunks <- function(local_df, lotvs_backbone_taxonomy, rank, dir_path, chun
   
   if (rank == "SPECIES") {
     keys <- lotvs_backbone_taxonomy %>%
-      pull(usageKey)
+      dplyr::pull(usageKey)
     column <- "specieskey"
   } else {
     keys <- lotvs_backbone_taxonomy %>%
-      pull(genus)
+      dplyr::pull(genus)
     column <- "genus"
   }
   
@@ -82,7 +82,7 @@ write_chunks <- function(local_df, lotvs_backbone_taxonomy, rank, dir_path, chun
     function(keys_chunk, idx) {
       message("Writing ", rank, " chunk ", idx, " of ", length(keys_chunks))
       local_df %>%
-        filter(!!sym(column) %in% keys_chunk) %>%
+        dplyr::filter(!!sym(column) %in% keys_chunk) %>%
         write_dataset(
           path = dir_path,
           format = "parquet",

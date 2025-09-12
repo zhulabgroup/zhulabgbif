@@ -18,7 +18,9 @@ A list of chunks, where each chunk is a subvector of the input vector.
 This function splits a taxon vector into smaller chunks of a specified size.
 }
 \examples{
+\dontrun{
 split_into_chunks(1:10, 3)
 # Returns: list(1:3, 4:6, 7:9, 10)
+}
 }
 \keyword{internal}

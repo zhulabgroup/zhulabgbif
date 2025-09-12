@@ -1,9 +1,17 @@
 ---
 title: "GBIF data access and processing workflow"
 author: "Jiali Zhu, Kai Zhu"
-date: today
-editor_options:
-  chunk_output_type: console
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    code_folding: show
+    self_contained: true
+bibliography: references.bib
+vignette: >
+  %\VignetteIndexEntry{GBIF Data Processing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 **Require packages**
@@ -88,6 +96,7 @@ When these `usageKeys` are used to download occurrence records or access records
 To ensure comprehensive data collection, it is recommended to replace the `usageKey` with the `acceptedUsageKey` for these synonymous species and genera.
 
 ```{r consolidate-synonyms}
+#| eval: false
 # Update the dataset to use acceptedUsageKey for synonyms
 lotvs_backbone_filtered_consolidated <- lotvs_backbone_filtered |>
   mutate(usageKey = if_else(status == "SYNONYM", acceptedUsageKey, usageKey))

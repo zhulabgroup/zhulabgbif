@@ -35,8 +35,10 @@ gbif_custom_download <- function(lotvs_backbone_path) {
 #' @return A list of chunks, where each chunk is a subvector of the input vector.
 #' @keywords internal
 #' @examples
+#' \dontrun{
 #' split_into_chunks(1:10, 3)
 #' # Returns: list(1:3, 4:6, 7:9, 10)
+#' }
 split_into_chunks <- function(x, chunk_size) {
   split(x, ceiling(seq_along(x) / chunk_size))
 }
@@ -48,12 +50,14 @@ split_into_chunks <- function(x, chunk_size) {
 #' @param taxon_chunks A list of taxon key chunks to be processed.
 #' @return The total occurrence count.
 #' @keywords internal
-#' @import tidyverse
-#' @importFrom rgbif occ_count
 #' @examples
+#' \dontrun{
 #' taxon_chunks <- list(c("key1", "key2"), c("key3", "key4"))
 #' get_total_occurrence_count(taxon_chunks)
 #' # Returns: total occurrence count for the provided chunks
+#' }
+#' @import tidyverse
+#' @importFrom rgbif occ_count
 get_total_occurrence_count <- function(taxon_chunks) {
   total_occurrence_count <- 0
   for (chunk in taxon_chunks) {

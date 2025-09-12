@@ -16,8 +16,10 @@ The total occurrence count.
 This function calculates the total number of occurrences for a list of taxon keys
 }
 \examples{
+\dontrun{
 taxon_chunks <- list(c("key1", "key2"), c("key3", "key4"))
 get_total_occurrence_count(taxon_chunks)
 # Returns: total occurrence count for the provided chunks
+}
 }
 \keyword{internal}

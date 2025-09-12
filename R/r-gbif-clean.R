@@ -37,14 +37,14 @@ clean_occ_files <- function(input_dir, output_dir) {
 #'   `basisofrecord`, `coordinateuncertaintyinmeters`, `decimallongitude`, `decimallatitude`, and `countrycode`.
 #' @return A cleaned data frame with the same columns as the input, but with filtered and cleaned coordinates.
 #' @keywords internal
-#' @importFrom dplyr filter
+#' @import tidyverse
 #' @importFrom CoordinateCleaner clean_coordinates
 #' @importFrom cli cli_alert_danger
 clean_occ <- function(occ_data) {
   # basic filter
   occ_data <- occ_data |>
-    filter(basisofrecord == "HUMAN_OBSERVATION") |>
-    filter(is.na(coordinateuncertaintyinmeters) | coordinateuncertaintyinmeters <= 10000)
+    dplyr::filter(basisofrecord == "HUMAN_OBSERVATION") |>
+    dplyr::filter(is.na(coordinateuncertaintyinmeters) | coordinateuncertaintyinmeters <= 10000)
   
   if (nrow(occ_data) == 0) {
     cli_alert_danger("No records after filtering.")

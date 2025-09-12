@@ -37,6 +37,8 @@ This function downloads a GBIF snapshot, filters it based on the specified biolo
 and saves the filtered data into the specified local directory in Parquet format with flexible partitioning.
 }
 \examples{
+\dontrun{
 gbif_snapshot_download(bucket_fs, "gbif_snapshot_url", "local_dir", 
   filter_level = c("kingdom", "phylum"), filter_value = c("Plantae", "Tracheophyta"), partition_columns = c("class", "order"))
+}
 }

@@ -8,10 +8,12 @@
 #' @param proxy Optional. A list of proxy options to use for the connection. If not provided, a direct connection is used.
 #' @return An S3 bucket connection object.
 #' @examples
+#' \dontrun{
 #' setup_s3_bucket(bucket_name = "gbif-open-data-us-east-1",
 #' endpoint = "https://s3.us-east-1.amazonaws.com",
 #' region = "us-east-1",
 #' proxy = "http://proxy1.arc-ts.umich.edu:3128" # For using Slurm on Greatlakes)
+#' }
 #' @export
 #' @importFrom arrow s3_bucket
 setup_s3_bucket <- function(bucket_name, endpoint, region, proxy = NULL) {
@@ -48,11 +50,13 @@ setup_s3_bucket <- function(bucket_name, endpoint, region, proxy = NULL) {
 #'   For example, `c("class", "order")`.
 #' @return None. This function writes the filtered data into files at the specified local directory.
 #' @examples
+#' \dontrun{
 #' gbif_snapshot_download(bucket_fs, "gbif_snapshot_url", "local_dir", 
 #'   filter_level = c("kingdom", "phylum"), filter_value = c("Plantae", "Tracheophyta"), partition_columns = c("class", "order"))
+#' }
 #' @export
 #' @importFrom arrow open_dataset write_dataset
-#' @importFrom dplyr filter
+#' @import tidyverse
 gbif_snapshot_download <- function(
     bucket_fs,
     snapshot_path,
@@ -82,7 +86,7 @@ gbif_snapshot_download <- function(
   
   # Open the dataset, apply the filter, and write the dataset with flexible partitioning
   filtered_data <- open_dataset(snapshot_path) %>%
-    filter(!!filter_expr)
+    dplyr::filter(!!filter_expr)
   
   # Write the filtered data to the specified directory with flexible partitioning
   filtered_data %>%

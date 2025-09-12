@@ -52,11 +52,11 @@ process_taxonomy_record <- function(taxonomy_record, parquet_path, save_path) {
   cli_text("No. of taxonomy records: {nrow(taxonomy_record)}")
   
   species_keys <- taxonomy_record |>
-    filter(rank == "SPECIES") |>
+    dplyr::filter(rank == "SPECIES") |>
     dplyr::pull(usageKey) |>
     unique()
   genus_list <- taxonomy_record |>
-    filter(rank == "GENUS") |>
+    dplyr::filter(rank == "GENUS") |>
     dplyr::pull(genus) |>
     unique()
   
@@ -64,9 +64,9 @@ process_taxonomy_record <- function(taxonomy_record, parquet_path, save_path) {
   cli_text("Number of genus names: {length(genus_list)}")
   
   all_occ <- open_dataset(parquet_path) |>
-    filter(specieskey %in% species_keys | genus %in% genus_list) |>
-    filter(!is.na(decimallatitude) & !is.na(decimallongitude)) |>
-    filter(occurrencestatus == "PRESENT") |>
+    dplyr::filter(specieskey %in% species_keys | genus %in% genus_list) |>
+    dplyr::filter(!is.na(decimallatitude) & !is.na(decimallongitude)) |>
+    dplyr::filter(occurrencestatus == "PRESENT") |>
     dplyr::select(
       species, genus, family, specieskey, decimallongitude, decimallatitude,
       countrycode, taxonkey, basisofrecord, occurrencestatus,
