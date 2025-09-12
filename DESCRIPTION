@@ -1,4 +1,4 @@
-Package: zhulabtools-gbif
+Package: zhulabtools_gbif
 Title: Tools for GBIF downlaod and process developed by Zhu Lab
 Version: 1.0.0
 Authors@R: 
