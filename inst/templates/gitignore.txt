@@ -1,18 +1,19 @@
+<<<<<<< HEAD:inst/templates/gitignore.txt
+=======
+# Project folders
+data
+temp
+
+>>>>>>> e66ae9d1a40fe49c2e3ec34a35d9aa428ffb8db7:inst/templates/gitignore_template.txt
 # Mac files
 .DS_Store
+
+# Quarto files
+/.quarto/
 
 # R Markdown files
 *.docx
 *.html
-
-# Bookdown files
-*.rds
-.Rproj.user
-.Rhistory
-.RData
-_book
-_bookdown_files
-rsconnect
 
 # History files
 .Rhistory
@@ -20,6 +21,7 @@ rsconnect
 
 # Session Data files
 .RData
+.RDataTmp
 
 # User-specific files
 .Ruserdata
@@ -53,7 +55,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
-inst/doc
-/doc/
-/Meta
-/Meta/
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
