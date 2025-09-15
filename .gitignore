@@ -5,6 +5,8 @@
 *.docx
 *.html
 /inst/
+/inst
+inst/
 
 # Bookdown files
 *.rds
@@ -54,7 +56,6 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
-inst/doc
 /doc/
 /Meta
 /Meta/
