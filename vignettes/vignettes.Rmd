@@ -209,15 +209,15 @@ bucket_fs <- setup_s3_bucket(
 gbif_snapshot_url <- bucket_fs$path("occurrence/2025-05-01/occurrence.parquet")
 
 # Define local directory to save the snapshot
-local_save_dir <- "~/Downloads/gbif_snapshot_test"
+local_save_dir <- "local/save/dir/snapshot"
 
 # Download and save the GBIF snapshot
 if(Download){
   gbif_snapshot_download(bucket_fs, 
                          gbif_snapshot_url, 
                          local_save_dir,
-                         filter_level = c("kingdom", "phylum"),
-                         filter_value = c("Plantae", "Tracheophyta"),
+                         filter_level = c("kingdom", "phylum", "countrycode"),
+                         filter_value = c("Plantae", "Tracheophyta", "SW"),
                          partition_columns = c("class", "order"))
 }
 ```
