@@ -20,21 +20,24 @@ gbif_snapshot_download(
 
 \item{local_save_dir}{The local directory to save the filtered snapshot.}
 
-\item{filter_level}{A character vector of classification levels to filter the data by (e.g., "kingdom", "phylum").
+\item{filter_level}{A character vector of classification levels to filter the data.
+Supports both biological classification levels (e.g., "kingdom", "phylum", "class", "order", "family")
+and country codes (e.g., "US", "SW").
 Default is \code{c("kingdom", "phylum")}.}
 
-\item{filter_value}{A character vector of values for the classification levels (e.g., "Plantae", "Tracheophyta").
+\item{filter_value}{A character vector of values for the classification levels.
 Default is \code{c("Plantae", "Tracheophyta")}.}
 
 \item{partition_columns}{A character vector specifying which columns to use for partitioning the data.
-For example, \code{c("class", "order")}.}
+Default is \code{c("class", "order")}.}
 }
 \value{
 None. This function writes the filtered data into files at the specified local directory.
 }
 \description{
-This function downloads a GBIF snapshot, filters it based on the specified biological classification levels and values,
-and saves the filtered data into the specified local directory in Parquet format with flexible partitioning.
+This function downloads a GBIF snapshot, filters it by specified biological classification levels and values,
+optionally filters records by country code, and saves the filtered data into the specified local directory
+in Parquet format with flexible partitioning.
 }
 \examples{
 \dontrun{

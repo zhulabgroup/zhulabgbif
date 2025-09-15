@@ -22,9 +22,10 @@ vignette: >
 if (!require(devtools)) {
   install.packages("devtools")
 }
-devtools::install_github("zhulabgroup/zhulabtools@r")
-library(zhulabtools)
+devtools::install_github("zhulabgroup/zhulabgbif")
+library(zhulabgbif)
 
+library(zhulabtools)
 check_install_packages(c("here", "tidyverse", "rgbif"))
 load_packages(c("cli", "here", "tidyverse","rgbif"))
 ```
@@ -188,7 +189,7 @@ If there is a large number of species, retrieving occurrence data will be comput
 
 A full occurrence snapshot is taken monthly by GBIF, and this document displays the example code to download the vascular palnts snapshot from *May 1, 2025*. The dataset is accessible via an [Amazon AWS Open Dataset](https://registry.opendata.aws/gbif/). GBIF hosts data in five AWS regions, allowing users to select a nearby server for faster download speeds and reduced latency [(ref)](https://github.com/gbif/occurrence/blob/master/aws-public-data.md).
 
-We chose the US East region for downlaoding. In this example, records were filtered to include only those from the `Plantae` kingdom and `Tracheophyta` phylum. The downloaded dataset is partitioned by `class` and `order` A citation is available within the data folder.
+We chose the US East region for downlaoding. In this example, records were filtered to include only those from the `Plantae` kingdom and `Tracheophyta` phylum in Sweden. The downloaded dataset is partitioned by `class` and `order` A citation is available within the data folder.
 
 ```{r}
 #| eval: false
@@ -208,7 +209,7 @@ bucket_fs <- setup_s3_bucket(
 gbif_snapshot_url <- bucket_fs$path("occurrence/2025-05-01/occurrence.parquet")
 
 # Define local directory to save the snapshot
-local_save_dir <- "local/save/dir/snapshot"
+local_save_dir <- "~/Downloads/gbif_snapshot_test"
 
 # Download and save the GBIF snapshot
 if(Download){

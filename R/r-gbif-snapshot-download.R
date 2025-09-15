@@ -36,18 +36,21 @@ setup_s3_bucket <- function(bucket_name, endpoint, region, proxy = NULL) {
 
 #' Download and Filter GBIF Snapshot with Filtering and Partitioning
 #'
-#' This function downloads a GBIF snapshot, filters it based on the specified biological classification levels and values,
-#' and saves the filtered data into the specified local directory in Parquet format with flexible partitioning.
+#' This function downloads a GBIF snapshot, filters it by specified biological classification levels and values, 
+#' optionally filters records by country code, and saves the filtered data into the specified local directory 
+#' in Parquet format with flexible partitioning.
 #'
 #' @param bucket_fs The filesystem connection for the S3 bucket, used to access the snapshot.
 #' @param snapshot_path The path to the GBIF snapshot on the S3 bucket.
 #' @param local_save_dir The local directory to save the filtered snapshot.
-#' @param filter_level A character vector of classification levels to filter the data by (e.g., "kingdom", "phylum").
+#' @param filter_level A character vector of classification levels to filter the data.
+#' Supports both biological classification levels (e.g., "kingdom", "phylum", "class", "order", "family") 
+#' and country codes (e.g., "US", "SW").
 #'   Default is `c("kingdom", "phylum")`.
-#' @param filter_value A character vector of values for the classification levels (e.g., "Plantae", "Tracheophyta").
+#' @param filter_value A character vector of values for the classification levels.
 #'   Default is `c("Plantae", "Tracheophyta")`.
 #' @param partition_columns A character vector specifying which columns to use for partitioning the data.
-#'   For example, `c("class", "order")`.
+#'   Default is `c("class", "order")`.
 #' @return None. This function writes the filtered data into files at the specified local directory.
 #' @examples
 #' \dontrun{
