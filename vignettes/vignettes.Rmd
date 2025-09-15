@@ -16,7 +16,7 @@ vignette: >
 
 **Require packages**
 
-```{r setup}
+```{r setup, results='hide'}
 #| message: false
 #| warning: false
 if (!require(devtools)) {
@@ -177,8 +177,10 @@ If there is a large number of species, retrieving occurrence data will be comput
 
 <summary>Slurm script</summary>
 
-``` markdown
-{{< include "../slurm/gbif_custom_retrieve.sh" >}}
+```{r, echo=FALSE, results='asis'}
+cat("``` bash\n")
+cat(readLines("../slurm/gbif_custom_retrieve.sh"), sep = "\n")
+cat("\n```")
 ```
 
 </details>
@@ -230,8 +232,10 @@ Given the large size of the GBIF snapshot for vascular plants (nearly 60 GB), do
 
 <summary>Slurm script</summary>
 
-``` markdown
-{{< include "../slurm/gbif_snapshot_download.sh" >}}
+```{r, echo=FALSE, results='asis'}
+cat("``` bash\n")
+cat(readLines("../slurm/gbif_snapshot_download.sh"), sep = "\n")
+cat("\n```")
 ```
 
 </details>
@@ -267,8 +271,10 @@ Similarly, the retrieval script can be submitted as a Slurm batch job on a high-
 
 <summary>Slurm script</summary>
 
-``` markdown
-{{< include "../slurm/gbif_snapshot_retrieve.sh" >}}
+```{r, echo=FALSE, results='asis'}
+cat("``` bash\n")
+cat(readLines("../slurm/gbif_snapshot_retrieve.sh"), sep = "\n")
+cat("\n```")
 ```
 
 </details>

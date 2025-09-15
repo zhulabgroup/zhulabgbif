@@ -21,6 +21,5 @@ library(zhulabgbif)
 ```
 5. To access the vignettes, use
 ```R
-browseVignettes("zhulabgbif")
 vignette("vignettes", package = "zhulabgbif")
 ```
