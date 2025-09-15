@@ -4,6 +4,7 @@
 # R Markdown files
 *.docx
 *.html
+/inst/
 
 # Bookdown files
 *.rds
