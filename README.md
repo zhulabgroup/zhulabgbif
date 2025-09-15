@@ -13,9 +13,14 @@ install.packages("devtools")
 ```
 3. Install *zhulabgbif* with
 ```R
-devtools::install_github("zhulabgroup/zhulabgbif")
+devtools::install_github("zhulabgroup/zhulabgbif", build_vignettes = TRUE)
 ```
 4. Import *zhulabgbif* with
 ```R
 library(zhulabgbif)
+```
+5. To access the vignettes, use
+```R
+browseVignettes("zhulabgbif")
+vignette("vignettes", package = "zhulabgbif")
 ```
