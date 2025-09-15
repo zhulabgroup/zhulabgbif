@@ -219,7 +219,7 @@ if(Download){
                          gbif_snapshot_url, 
                          local_save_dir,
                          filter_level = c("kingdom", "phylum", "countrycode"),
-                         filter_value = c("Plantae", "Tracheophyta", "SW"),
+                         filter_value = c("Plantae", "Tracheophyta", "SE"),
                          partition_columns = c("class", "order"))
 }
 ```
